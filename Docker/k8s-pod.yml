@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: dockerdemo-rs
+  labels:
+    app: dockerdemo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockerdemo
+  template:
+    metadata:
+      name: dockerdemo
+      labels:
+        app: dockerdemo
+    spec:
+      containers:
+        - name: dockerdemo
+          image: saisreech/saisimg
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
